@@ -14,14 +14,16 @@
 <body>
     <script>
     
-        function download(filename, text) {
+        function download(url) {
           var element = document.createElement('a');
-          element.setAttribute('href', 'data:text/plain;charset=utf-8,download/' + encodeURIComponent(text));
-          element.setAttribute('download', filename);
+          element.setAttribute('href', url);
+		  element.setAttribute('target', '_blank');
+          element.setAttribute('download','');
 
           element.style.display = 'none';
           document.body.appendChild(element);
 
+			console.log(element);
           element.click();
 
           document.body.removeChild(element);
@@ -36,7 +38,7 @@
                     <a title="open in full" href="img/ez-net.jpg" target="_blank"><img src="img/ez-net.jpg" class="img-thumbnail" /></a>
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('ez-net.py')">Download</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('https://raw.githubusercontent.com/Klemek/PythonStuff/master/ez-net/ez-net.py')">Download</button>
                         </div>
                     </div>
                 </div>
@@ -48,10 +50,10 @@
                     <a title="open in full" href="img/lanchat.jpg" target="_blank"><img src="img/lanchat.jpg" class="img-thumbnail" /></a>
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('LanChat-Serveur-v2.jar')">Download Server</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('./download/LanChat-Serveur-v2.jar')">Download Server</button>
                         </div>
                         <div class="col-md-6 col-sm-6">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('LanChat-v2.jar')">Download Client</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('./download/LanChat-v2.jar')">Download Client</button>
                         </div>
                     </div>
                 </div>
@@ -65,7 +67,7 @@
                     <a title="open in full" href="img/minimario.jpg" target="_blank"><img src="img/minimario.jpg" class="img-thumbnail" /></a>
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('MiniMario.jar')">Download</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('./download/MiniMario.jar')">Download</button>
                         </div>
                     </div>
                 </div>
@@ -77,7 +79,7 @@
                     <a title="open in full" href="img/graph.jpg" target="_blank"><img src="img/graph.jpg" class="img-thumbnail" /></a>
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('Graph.py')">Download</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('https://raw.githubusercontent.com/Klemek/PythonStuff/master/graph/graph.py')">Download</button>
                         </div>
                     </div>
                 </div>
@@ -91,25 +93,25 @@
                         Need <a href="http://ffmpeg.zeranoe.com/builds/" target="_blank">ffmpeg</a> and <a href="https://eternallybored.org/misc/gifsicle/" target="_blank" >gifsicle</a></p>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('cut.bat')">Download Cutter</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('./download/cut.bat')">Download Cutter</button>
                         </div>
                     </div>
                     <h4 style="margin-top: 5px">Cut a video from given timecodes</h4>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('h265.bat')">Download H265</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('./download/h265.bat')">Download H265</button>
                         </div>
                     </div>
                     <h4 style="margin-top: 5px">A simple h265 video converter to reduce greatly its size</h4>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                            <button type="button" class="btn btn-default btn-md" onclick="download('video2gif.bat')">Download Video2Gif</button>
+                            <button type="button" class="btn btn-default btn-md" onclick="download('./download/video2gif.bat')">Download Video2Gif</button>
                         </div>
                     </div>
                     <h4 style="margin-top: 5px">Convert a video into an optimized GIF with the given width and FPS</h4>
                 </div>
             </div>
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
                 <div class="jumbotron shadow row2">
                     <h2>Unity tests</h2>
                     <p>Some tutorials and tests I've made</p>
@@ -124,7 +126,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4">
