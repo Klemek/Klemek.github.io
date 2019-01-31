@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>klemek.github.io</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <script>
+    
+        function download(filename, text) {
+          var element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,download/' + encodeURIComponent(text));
+          element.setAttribute('download', filename);
+
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
+        }
+    </script>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <div class="jumbotron shadow row1">
+                    <h2>EZ-Net</h2>
+                    <p>Small network cutter tool<br/>Code : Python</p>
+                    <a title="open in full" href="img/ez-net.jpg" target="_blank"><img src="img/ez-net.jpg" class="img-thumbnail" /></a>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('ez-net.py')">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="jumbotron shadow row1">
+                    <h2>LanChat (French)</h2>
+                    <p>Chat simply over lan network<br/>Code : Java</p>
+                    <a title="open in full" href="img/lanchat.jpg" target="_blank"><img src="img/lanchat.jpg" class="img-thumbnail" /></a>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('LanChat-Serveur-v2.jar')">Download Server</button>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('LanChat-v2.jar')">Download Client</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <div class="jumbotron shadow row2">
+                    <h2>MiniMario</h2>
+                    <p>A tiny mario that walk accross your screen<br/>Code : Java</p>
+                    <a title="open in full" href="img/minimario.jpg" target="_blank"><img src="img/minimario.jpg" class="img-thumbnail" /></a>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('MiniMario.jar')">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="jumbotron shadow row2">
+                    <h2>Graph (French)</h2>
+                    <p>Chat simply over lan network<br/>Code : Python</p>
+                    <a title="open in full" href="img/graph.jpg" target="_blank"><img src="img/graph.jpg" class="img-thumbnail" /></a>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('Graph.py')">Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <div class="jumbotron shadow row2">
+                    <h2>Windows Batch scripts</h2>
+                    <p>Some useful scripts I use<br/>Code : Batch<br/>
+                        Need <a href="http://ffmpeg.zeranoe.com/builds/" target="_blank">ffmpeg</a> and <a href="https://eternallybored.org/misc/gifsicle/" target="_blank" >gifsicle</a></p>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('cut.bat')">Download Cutter</button>
+                        </div>
+                    </div>
+                    <h4 style="margin-top: 5px">Cut a video from given timecodes</h4>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('h265.bat')">Download H265</button>
+                        </div>
+                    </div>
+                    <h4 style="margin-top: 5px">A simple h265 video converter to reduce greatly its size</h4>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                            <button type="button" class="btn btn-default btn-md" onclick="download('video2gif.bat')">Download Video2Gif</button>
+                        </div>
+                    </div>
+                    <h4 style="margin-top: 5px">Convert a video into an optimized GIF with the given width and FPS</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="jumbotron shadow row2">
+                    <h2>Unity tests</h2>
+                    <p>Some tutorials and tests I've made</p>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                            <button type="button" class="btn btn-default btn-md" onclick="window.location='../games/2DRoguelike'">2D Roguelike</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                            <button type="button" class="btn btn-default btn-md" onclick="window.location='../games/2DPlateformer'">2D Plateformer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5 col-sm-4 col-sm-offset-4">
+                <button type="button" class="btn btn-default btn-md" onclick="window.location='../'">Back</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        if(screen.width > 480){
+            for(var i = 1; i <= 2; i++){
+                var h = 0;
+                $(".row"+i).each(function(){
+                   if($(this).height() > h)
+                       h = $(this).height();
+                });
+                $(".row"+i).each(function(){
+                    $(this).height(h);
+                });
+            }
+        }
+    </script>
+</body>

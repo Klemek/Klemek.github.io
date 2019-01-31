@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>klemek.github.io</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+
+<body>
+    <script>
+	
+		function writeCookie(cname, cvalue, exdays) {
+			var d = new Date();
+			d.setTime(d.getTime() + (exdays*24*60*60*1000));
+			var expires = "expires="+ d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function readCookie(cname) {
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i <ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+	
+        var options = {
+            allowfullscreen: false,
+            width: 1,
+            height: 1,
+            channel: "monstercat",
+        };
+        var player = null;
+        var volume = 0.5;
+        var playing = false;
+
+        function play() {
+            playing = true;
+            writeCookie("klemekfr-player", "true", 62); //2 months
+            player.setMuted(false);
+            player.setVolume(parseFloat(volume));
+            $("#playerPlay").removeClass("fa-play-circle-o");
+            $("#playerPlay").addClass("fa-pause-circle-o");
+
+            if (volume < 1)
+                $("#playerPlus").removeClass("disabled");
+            if (volume > 0.1)
+                $("#playerMinus").removeClass("disabled");
+        }
+
+        function pause() {
+            playing = false;
+            writeCookie("klemekfr-player", "false", 62);
+            player.setMuted(true);
+            player.setVolume(0);
+            $("#playerPlay").removeClass("fa-pause-circle-o");
+            $("#playerPlay").addClass("fa-play-circle-o");
+            $("#playerPlus").addClass("disabled");
+            $("#playerMinus").addClass("disabled");
+        }
+
+        function volumeMinus() {
+            if (playing) {
+                $("#playerPlus").removeClass("disabled");
+                if (volume > 0.1) {
+                    volume -= 0.1;
+                    if (volume <= 0.1) {
+                        volume = 0.1;
+                        $("#playerMinus").addClass("disabled");
+                    }
+                    player.setVolume(parseFloat(volume));
+                }
+            }
+        }
+
+        function volumePlus() {
+            if (playing) {
+                $("#playerMinus").removeClass("disabled");
+                if (volume < 1) {
+                    volume += 0.1;
+                    if (volume >= 1) {
+                        volume = 1;
+                        $("#playerPlus").addClass("disabled");
+                    }
+                    player.setVolume(parseFloat(volume));
+                }
+            }
+        }
+
+        $(document).ready(function() {
+
+            //PREVIEW
+
+            $('.preview').hover(function(event) { //Open on hover 
+                    if (event.currentTarget.id != undefined) {
+                        $("#preview img").attr("src", "");
+                        $("#preview img").attr("src", "img/" + event.currentTarget.id + ".jpg");
+                        $("#preview").stop();
+                        $("#preview").animate({
+                            width: '100%',
+                            opacity: '1'
+                        }, 200)
+                    }
+                },
+                function(event) { //Close when not hovered
+                    if (event.currentTarget.id != undefined) {
+                        $("#preview").stop();
+                        $("#preview").animate({
+                            width: '0%',
+                            opacity: '0'
+                        }, 200)
+                    }
+                });
+
+            //CLOCK
+
+            document.addEventListener("mousemove", move);
+
+            //TWITCH PLAYER
+
+            var embed = new Twitch.Embed("hidden-player", options);
+
+            embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+                player = embed.getPlayer();
+                player.setVolume(parseFloat(volume));
+                player.setQuality("mobile");
+
+                if (readCookie("klemekfr-player") !== "false") {
+                    play();
+                } else {
+                    pause();
+                }
+
+                $("#playerMinus").click(volumeMinus);
+                $("#playerPlus").click(volumePlus);
+
+                $("#playerPlay").click(function() {
+                    if ($("#playerPlay").hasClass("fa-pause-circle-o")) {
+                        pause();
+                    } else {
+                        play();
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="panel left">
+        <h2>Welcome to klemek.github.io</h2>
+        <h3>Site map :</h3>
+        <ul>
+            <li><a href="https://klemek.github.io/QuoteBox" class="colored preview" id="quotebox">QuoteBox</a></li>
+            <li><a href="https://klemek.github.io/SmoothClock" class="colored preview" id="clock">Clock</a></li>
+            <li><a href="https://klemek.github.io/MarbleGeneratorJS" class="colored preview" id="marble">Marble generator</a></li>
+            <li><a href="./progs" class="colored preview" id="progs">Others</a></li>
+        </ul>
+        <div id="preview"><img src="img/clock.jpg" /></div>
+        <h5>
+            <i id="playerMinus" class="fa fa-2x fa-minus-circle disabled" style="cursor:pointer;vertical-align: middle;margin-right:3px;"></i>
+            <i id="playerPlay" class="fa fa-2x" style="cursor:pointer;vertical-align: middle;margin-right:3px;"></i>
+            <i id="playerPlus" class="fa fa-2x fa-plus-circle disabled" style="cursor:pointer;vertical-align: middle;margin-right:10px;"></i>
+            <a href="https://www.twitch.tv/monstercat" target="_blank" class="colored" onclick="pause();">Monstercat twitch</a>
+
+
+        </h5>
+        <div id="hidden-player" style="display:none;"></div>
+        <h5>Klemek, 2019</h5>
+    </div>
+    <script src="https://klemek.github.io/SmoothClock/clock.js"></script>
+</body>
+
+</html>
